@@ -1,2 +1,1 @@
-# lifeisunfair
-making game for tata hackathon
+# Python-Platformer

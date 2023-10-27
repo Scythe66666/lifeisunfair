@@ -1,0 +1,46 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+ANIMATION_DELAY	tutorial.py	/^    ANIMATION_DELAY = 3$/;"	v	class:Fire
+ANIMATION_DELAY	tutorial.py	/^    ANIMATION_DELAY = 3$/;"	v	class:Player
+Block	tutorial.py	/^class Block(Object):$/;"	c
+COLOR	tutorial.py	/^    COLOR = (255, 0, 0)$/;"	v	class:Player
+FPS	tutorial.py	/^FPS = 60$/;"	v
+Fire	tutorial.py	/^class Fire(Object):$/;"	c
+GRAVITY	tutorial.py	/^    GRAVITY = 1$/;"	v	class:Player
+Object	tutorial.py	/^class Object(pygame.sprite.Sprite):$/;"	c
+PLAYER_VEL	tutorial.py	/^PLAYER_VEL = 5$/;"	v
+Player	tutorial.py	/^class Player(pygame.sprite.Sprite):$/;"	c
+SPRITES	tutorial.py	/^    SPRITES = load_sprite_sheets("MainCharacters", "MaskDude", 32, 32, True)$/;"	v	class:Player
+__init__	tutorial.py	/^    def __init__(self, x, y, size):$/;"	m	class:Block
+__init__	tutorial.py	/^    def __init__(self, x, y, width, height):$/;"	m	class:Fire
+__init__	tutorial.py	/^    def __init__(self, x, y, width, height):$/;"	m	class:Player
+__init__	tutorial.py	/^    def __init__(self, x, y, width, height, name=None):$/;"	m	class:Object
+collide	tutorial.py	/^def collide(player, objects, dx):$/;"	f
+draw	tutorial.py	/^    def draw(self, win, offset_x):$/;"	m	class:Object
+draw	tutorial.py	/^    def draw(self, win, offset_x):$/;"	m	class:Player
+draw	tutorial.py	/^def draw(window, background, bg_image, player, objects, offset_x):$/;"	f
+flip	tutorial.py	/^def flip(sprites):$/;"	f
+get_background	tutorial.py	/^def get_background(name):$/;"	f
+get_block	tutorial.py	/^def get_block(size):$/;"	f
+handle_move	tutorial.py	/^def handle_move(player, objects):$/;"	f
+handle_vertical_collision	tutorial.py	/^def handle_vertical_collision(player, objects, dy):$/;"	f
+hit_head	tutorial.py	/^    def hit_head(self):$/;"	m	class:Player
+jump	tutorial.py	/^    def jump(self):$/;"	m	class:Player
+landed	tutorial.py	/^    def landed(self):$/;"	m	class:Player
+load_sprite_sheets	tutorial.py	/^def load_sprite_sheets(dir1, dir2, width, height, direction=False):$/;"	f
+loop	tutorial.py	/^    def loop(self):$/;"	m	class:Fire
+loop	tutorial.py	/^    def loop(self, fps):$/;"	m	class:Player
+main	tutorial.py	/^def main(window):$/;"	f
+make_hit	tutorial.py	/^    def make_hit(self):$/;"	m	class:Player
+move	tutorial.py	/^    def move(self, dx, dy):$/;"	m	class:Player
+move_left	tutorial.py	/^    def move_left(self, vel):$/;"	m	class:Player
+move_right	tutorial.py	/^    def move_right(self, vel):$/;"	m	class:Player
+off	tutorial.py	/^    def off(self):$/;"	m	class:Fire
+on	tutorial.py	/^    def on(self):$/;"	m	class:Fire
+update	tutorial.py	/^    def update(self):$/;"	m	class:Player
+update_sprite	tutorial.py	/^    def update_sprite(self):$/;"	m	class:Player
+window	tutorial.py	/^window = pygame.display.set_mode((WIDTH, HEIGHT))$/;"	v
