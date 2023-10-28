@@ -5,8 +5,8 @@ import math
 import pygame
 from os import listdir
 from os.path import isfile, join
-pygame.init()
 
+pygame.init()
 pygame.display.set_caption("Platformer")
 
 WIDTH, HEIGHT = 1000, 800
@@ -57,7 +57,7 @@ def get_block(size):
 class Player(pygame.sprite.Sprite):
     COLOR = (255, 0, 0)
     GRAVITY = 1
-    SPRITES = load_sprite_sheets("MainCharacters", "MaskDude", 32, 32, True)
+    SPRITES = load_sprite_sheets("MainCharacters", "NinjaFrog", 32, 32, True)
     ANIMATION_DELAY = 3
 
     def __init__(self, x, y, width, height):
@@ -208,15 +208,37 @@ def draw_background(name):
     image = pygame.transform.scale(image,(info.current_w,info.current_h))
     return image
 
+def draw_dialogue(text,x,y):
+    if text == None:
+        return None
+    image = pygame.image.load(join("assets","Other","Dialogue.png"))
+    info = pygame.display.Info()
+    WIDTH = info.current_w
+    HEIGHT = info.current_h
+    image = pygame.transform.scale(image,(0.2*WIDTH+(12*len(text)),0.2*HEIGHT))
+    text = font.render(text,True,(255,255,255))
 
-def draw(window, bg_image, player, objects, offset_x):
+    return (image,text,x,y)
 
+
+def draw(window, bg_image, player, dialogue, objects, offset_x):
+    info = pygame.display.Info()
+    
     window.blit(bg_image,(0,0))
+    WIDTH = info.current_w
+    HEIGHT = info.current_h
 
     for obj in objects:
         obj.draw(window, offset_x)
 
     player.draw(window, offset_x)
+    
+    window.blit(dialogue[0],(dialogue[2],dialogue[3]))
+    _,_,x,y = dialogue
+    x += 0.1*WIDTH
+    y += (0.1*HEIGHT)
+    
+    window.blit(dialogue[1],(x,y))
 
     pygame.display.update()
 
@@ -270,25 +292,37 @@ def handle_move(player, objects):
         if obj and obj.name == "fire":
             player.make_hit()
 
+def text_box(x,y):
+    text = "Earth"
+    text = font.render(text,True,(255,255,255))
+    return (text,x,y)
+    
+
+
 
 def main(window):
+
+    pygame.font.init()
+    font = pygame.font.Font(None, 36)
     clock = pygame.time.Clock()
+    
 
     block_size = 96
 
     player = Player(100, 100, 50, 50)
     fire = Fire(100, HEIGHT - block_size - 64, 16, 32)
-    fire.on()
+    fire.off()
     floor = [Block(i * block_size, HEIGHT - block_size, block_size)
              for i in range(-WIDTH // block_size, (WIDTH * 2) // block_size)]
     objects = [*floor, Block(0, HEIGHT - block_size * 2, block_size),
                Block(block_size * 3, HEIGHT - block_size * 4, block_size), fire]
 
+
     offset_x = 0
     scroll_area_width = 200
 
     run = True
-    prevdim = HEIGHT,WIDTH
+    dialogue = draw_dialogue("hello world",0,0)
     while run:
         clock.tick(FPS)
         bg_image = draw_background("desert.png")
@@ -305,7 +339,7 @@ def main(window):
         player.loop(FPS)
         fire.loop()
         handle_move(player, objects)
-        draw(window, bg_image, player, objects, offset_x)
+        draw(window, bg_image, player, dialogue, objects, offset_x)
 
         if ((player.rect.right - offset_x >= WIDTH - scroll_area_width) and player.x_vel > 0) or (
                 (player.rect.left - offset_x <= scroll_area_width) and player.x_vel < 0):
